@@ -39,6 +39,46 @@ namespace Utils
                 isUsed = _isUsed;
             }
         }
+        
+        public enum RSI_TYPE
+        {
+            BEARISH = 0,
+            BULLISH = 1,
+        }
+
+        public enum RECENT_CHANGE
+        {
+            MIXED = 0,
+            DECREASE = 1,
+            INCREASE = 2,
+        }
+
+        public enum TREND_TYPE
+        {
+            UNCONFIRMED = 0,
+            UPTREND = 1,
+            DOWNTREND = 2,
+        }
+
+        public struct RsiData
+        {
+            public int type;
+            public Point startPoint;
+            public Point endPoint;
+            public int streight;
+            public int recentChange;
+            public int lastTrend;
+            public RsiData(Point _startPoint, Point _endPoint, RSI_TYPE _type, int _streight = 0, RECENT_CHANGE _recentChange = RECENT_CHANGE.MIXED, TREND_TYPE _lastTrend = TREND_TYPE.UNCONFIRMED)
+            {
+                startPoint = _startPoint;
+                endPoint = _endPoint;
+                type = (int)_type;
+                streight = _streight;
+                recentChange = (int)_recentChange;
+                lastTrend = (int)_lastTrend;
+            }
+
+        }
 
         public double distanceFromPointToLine(double x, double y, double slope, double b)
         {
