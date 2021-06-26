@@ -199,7 +199,7 @@ namespace Utils
             bool hasLowerPoint = false;
             for (int i = startRange; i <= endRange; i++)
             {
-                var lowest = Math.Max(bars.OpenPrices[i], bars.ClosePrices[i]);
+                var lowest = Math.Min(bars.OpenPrices[i], bars.ClosePrices[i]);
                 if (lowest < price)
                 {
                     hasLowerPoint = true;
