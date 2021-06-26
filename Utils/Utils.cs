@@ -178,6 +178,38 @@ namespace Utils
             return shoulModify;
         }
 
+        public bool hasHigherPointAtRange(double price, int startRange, int endRange, Bars bars)
+        {
+            bool hasHigherPoint = false;
+            for(int i = startRange; i<= endRange; i++)
+            {
+                var highest = Math.Max(bars.OpenPrices[i], bars.ClosePrices[i]);
+                if (highest > price)
+                {
+                    hasHigherPoint = true;
+                    break;
+                }
+            }
+
+            return hasHigherPoint;
+        }
+
+        public bool hasLowerPointAtRange(double price, int startRange, int endRange, Bars bars)
+        {
+            bool hasLowerPoint = false;
+            for (int i = startRange; i <= endRange; i++)
+            {
+                var lowest = Math.Max(bars.OpenPrices[i], bars.ClosePrices[i]);
+                if (lowest < price)
+                {
+                    hasLowerPoint = true;
+                    break;
+                }
+            }
+
+            return hasLowerPoint;
+        }
+
         public bool shouldModifyTrailingStopT1(Position position,
             double currAskPrice, double currBidPrice,
             double pipSize,
